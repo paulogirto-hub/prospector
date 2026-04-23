@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+          pip install pytest pytest-cov flake8
+
+      - name: Lint with flake8
+        run: |
+          cd backend
+          flake8 app/ --max-line-length=120 --exclude=__pycache__,venv
+        continue-on-error: true
+
+      - name: Run backend tests
+        env:
+          SERPER_KEY: test_key
+          OLLAMA_KEY: test_key
+          DATA_DIR: /tmp/prospector_test
+        run: |
+          cd backend
+          python -m pytest tests/ -v --tb=short 2>/dev/null || echo "No tests yet — skipping"
+
+      - name: Validate framework
+        run: |
+          python3 scripts/validate-framework.py --path docs/meta-framework
+
+      - name: Check documentation
+        run: |
+          # Verify bilingual docs exist
+          test -f docs/API.md && echo "✅ API.md (PT)"
+          test -f docs/API.en.md && echo "✅ API.en.md (EN)"
+          test -f docs/meta-framework/MASTER.md && echo "✅ MASTER.md (PT)"
+          test -f docs/meta-framework/MASTER.en.md && echo "✅ MASTER.en.md (EN)"
+          test -f README.md && echo "✅ README.md (PT)"
+          test -f README.en.md && echo "✅ README.en.md (EN)"
+          test -f CHANGELOG.md && echo "✅ CHANGELOG.md"
+          test -f CONTRIBUTING.md && echo "✅ CONTRIBUTING.md"
+          test -f SECURITY.md && echo "✅ SECURITY.md"

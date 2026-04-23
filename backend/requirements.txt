@@ -4,3 +4,8 @@ requests==2.32.3
 gunicorn==23.0.0
 beautifulsoup4==4.12.3
 pydantic>=2.0.0
+
+# ─── Dev ───
+pytest>=7.0.0
+pytest-cov>=4.0.0
+flake8>=6.0.0

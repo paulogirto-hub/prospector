@@ -60,6 +60,11 @@ node_modules/
 REFACTOR.md
 REFACTOR-FRONTEND.md
 
+# ─── Testing ───
+.pytest_cache/
+htmlcov/
+coverage.xml
+
 # ─── Temp scripts ───
 flatten_patch.py
 
