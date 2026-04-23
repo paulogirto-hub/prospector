@@ -4,13 +4,15 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue) ![Python](https://img.shields.io/badge/python-3.11-blue) ![Docker](https://img.shields.io/badge/docker-ready-brightgreen)
 
+**🇧🇷 [Leia em Português](README.md)**
+
 ---
 
 ## ✨ Features
 
 - **🔍 Discovery** — Search businesses by niche, city, and state using Google (Serper API)
 - **📋 Enrichment** — Scrape websites, Instagram, Google Maps, and BrasilAPI (CNPJ) for each lead
-- **⭐ Scoring** — Automatic 0-100 presence digital score per lead
+- **⭐ Scoring** — Automatic 0-100 digital presence score per lead
 - **📊 Market Analysis** — AI-generated macro market insights (opportunities, competition, entry strategy)
 - **🧠 Lead Analysis** — Individual AI diagnosis per lead (weaknesses, strengths, WhatsApp approach, revenue estimates)
 - **🔬 Full Diagnosis** — Deep-dive diagnostic per lead with urgency rating, suggested services, and WhatsApp message template
@@ -24,45 +26,70 @@
 
 ## 📸 Screenshots
 
-### 🔍 Busca de Empresas
+### 🔍 Search Dashboard
 
 <p align="center">
-  <img src="docs/screenshots/01-homepage.png" alt="Homepage — Dashboard com histórico de buscas" width="700">
+  <img src="docs/screenshots/01-homepage.png" alt="Homepage — Dashboard with search history" width="700">
 </p>
 
-Dashboard principal com histórico de buscas recentes e acesso rápido a pesquisas anteriores.
+Main dashboard with recent search history and quick access to previous research.
 
-### 📋 Formulário de Pesquisa
+### 📋 Search Form
 
 <p align="center">
-  <img src="docs/screenshots/02-search-form.png" alt="Formulário de pesquisa por nicho e cidade" width="700">
+  <img src="docs/screenshots/02-search-form.png" alt="Search form by niche and city" width="700">
 </p>
 
-Busca por nicho (ex: restaurante, dentista) e cidade — o pipeline completa automaticamente.
+Search by niche (e.g., restaurant, dentist) and city — the pipeline completes automatically.
 
-### 📊 Resultados com Filtros
+### 📊 Filtered Results
 
 <p align="center">
-  <img src="docs/screenshots/03-results.png" alt="Lista de leads com score, filtros e ordenação" width="700">
+  <img src="docs/screenshots/03-results.png" alt="Lead list with score, filters, and sorting" width="700">
 </p>
 
-Leads ranqueados por score de presença digital (0-100) com filtros por plataforma e ordenação.
+Leads ranked by digital presence score (0-100) with platform filters and sorting.
 
-### 🏢 Detalhe do Lead
+### 🏢 Lead Detail
 
 <p align="center">
-  <img src="docs/screenshots/04-lead-detail.png" alt="Detalhe completo do lead com dados enriquecidos" width="700">
+  <img src="docs/screenshots/04-lead-detail.png" alt="Complete lead detail with enriched data" width="700">
 </p>
 
-Dados enriquecidos: site, Instagram, Maps, CNPJ, score e presença digital detalhada.
+Enriched data: website, Instagram, Maps, CNPJ, score, and detailed digital presence.
 
-### 🧠 Diagnóstico com IA
+### 🧠 AI Diagnosis
 
 <p align="center">
-  <img src="docs/screenshots/05-diagnosis.png" alt="Diagnóstico de IA com análise, urgência e template WhatsApp" width="700">
+  <img src="docs/screenshots/05-diagnosis.png" alt="AI diagnosis with analysis, urgency, and WhatsApp template" width="700">
 </p>
 
-Diagnóstico individual por IA: fraquezas, oportunidades, urgência e mensagem de abordagem para WhatsApp.
+Individual AI diagnosis: weaknesses, opportunities, urgency rating, and WhatsApp approach message.
+
+---
+
+## 🎯 Target Audience
+
+| Profile | Use Case |
+|---------|----------|
+| **Marketing Agencies** | B2B client prospecting to offer digital services |
+| **Sales Consultants** | Lead enrichment and approach diagnosis |
+| **SDRs / Pre-sales** | Automatic company search by niche and location |
+| **Local Business Owners** | Competitor analysis and market opportunities |
+| **B2B Startups** | Market validation and automated outbound |
+
+## 💔 Pain Points Solved
+
+| Pain Point | How Prospector Solves It |
+|------------|--------------------------|
+| **Finding qualified leads** | Automatic search via Google, Maps, and CNPJ |
+| **Incomplete data** | Enrichment with website, Instagram, phone, email, CNPJ |
+| **No prioritization** | 0-100 digital presence score — focus on leads that need you most |
+| **Generic outreach** | AI diagnosis with personalized WhatsApp message |
+| **Wasting time on bad leads** | Filters by platform, score, and presence flags |
+| **Blind to competition** | AI market analysis showing opportunities and gaps |
+| **Slow manual process** | Full pipeline: search → enrich → score → analyze in minutes |
+| **No individual diagnosis** | Each lead gets a weakness, opportunity, and urgency analysis |
 
 ---
 
@@ -176,7 +203,12 @@ gunicorn app.main:app --bind 0.0.0.0:5000 --workers 4 --timeout 300
 
 ## 📡 API Documentation
 
-Full API reference available at [`docs/API.md`](docs/API.md).
+Full API reference available at:
+
+| File | Language |
+|------|----------|
+| [`docs/API.md`](docs/API.md) | 🇧🇷 Português |
+| [`docs/API.en.md`](docs/API.en.md) | 🇺🇸 English |
 
 ### Key Endpoints
 
@@ -250,59 +282,36 @@ backend/
 
 ---
 
-## 🎯 Público-Alvo
-
-| Perfil | Uso |
-|--------|-----|
-| **Agências de marketing** | Prospecção de clientes B2B para oferecer serviços digitais |
-| **Consultórios de vendas** | Enriquecimento de leads e diagnóstico de abordagem |
-| **SDRs / Pré-vendas** | Busca automática de empresas por nicho e localização |
-| **Donos de negócio local** | Análise de concorrência e oportunidades no próprio mercado |
-| **Startups B2B** | Validação de mercado e outbound automatizado |
-
-## 💔 Problemas que Resolve
-
-| Dor | Como Resolve |
-|----|-------------|
-| **Encontrar leads qualificados** | Busca automática via Google, Maps e CNPJ |
-| **Dados incompletos** | Enriquecimento com site, Instagram, telefone, email, CNPJ |
-| **Sem priorização** | Score 0-100 de presença digital — foco nos que mais precisam |
-| **Abordagem genérica** | Diagnóstico de IA com mensagem personalizada pra WhatsApp |
-| **Perda de tempo com leads ruins** | Filtros por plataforma, score e flags de presença |
-| **Concorrência cega** | Análise de mercado com IA mostrando oportunidades e gaps |
-| **Processo manual e lento** | Pipeline completa: busca → enriquece → pontua → analisa em minutos |
-| **Sem diagnóstico individual** | Cada lead recebe análise de fraquezas, oportunidades e urgência |
-
 ## 🏛️ Meta-Framework
 
-O Prospector inclui um **Meta-Framework de Engenharia de Sistemas** com 74 módulos cobrindo todo o ciclo de vida do produto.
+Prospector includes a **Systems Engineering Meta-Framework** with 74 modules covering the entire product lifecycle.
 
-### Estado Atual da Implementação
+### Current Implementation Status
 
-| Camada | Módulos | Implementado | Status |
-|--------|---------|-------------|--------|
-| **Core** (regras, dados, arquitetura) | 8 | 3 | 🟡 Parcial |
-| **Backend** (API, segurança, testes) | 8 | 4 | 🟡 Parcial |
-| **Frontend** (design, upload, UX) | 8 | 3 | 🟡 Parcial |
-| **AI** (providers, streaming, RAG) | 6 | 2 | 🔴 Básico |
-| **Infra** (deploy, CI/CD, SLO) | 7 | 2 | 🔴 Básico |
-| **Business** (pagamentos, growth) | 12 | 0 | ⚪ Planejado |
-| **Ops** (observabilidade, FinOps) | 6 | 1 | 🔴 Básico |
-| **Advanced** (feature flags, DLQ) | 5 | 0 | ⚪ Planejado |
-| **Shared** (segurança, glossário) | 13 | 0 | ⚪ Planejado |
+| Layer | Modules | Implemented | Status |
+|-------|---------|-------------|--------|
+| **Core** (rules, data, architecture) | 8 | 3 | 🟡 Partial |
+| **Backend** (API, security, testing) | 8 | 4 | 🟡 Partial |
+| **Frontend** (design, upload, UX) | 8 | 3 | 🟡 Partial |
+| **AI** (providers, streaming, RAG) | 6 | 2 | 🔴 Basic |
+| **Infra** (deploy, CI/CD, SLO) | 7 | 2 | 🔴 Basic |
+| **Business** (payments, growth) | 12 | 0 | ⚪ Planned |
+| **Ops** (observability, FinOps) | 6 | 1 | 🔴 Basic |
+| **Advanced** (feature flags, DLQ) | 5 | 0 | ⚪ Planned |
+| **Shared** (security, glossary) | 13 | 0 | ⚪ Planned |
 
-> **Resumo:** O MVP cobre o Happy Path (discovery → enrich → score → analyze → diagnose). O meta-framework define o roadmap enterprise — autenticação, multi-tenant, pagamentos, observabilidade, auto-cura e compliance estão planejados mas **não implementados**.
+> **Summary:** The MVP covers the Happy Path (discovery → enrich → score → analyze → diagnose). The meta-framework defines the enterprise roadmap — authentication, multi-tenant, payments, observability, self-healing, and compliance are planned but **not yet implemented**.
 
-### Validação
+### Validation
 
 ```bash
 python3 scripts/validate-framework.py --path docs/meta-framework -v
 ```
 
-### Documentação
+### Documentation
 
-| Arquivo | Idioma |
-|---------|--------|
+| File | Language |
+|------|----------|
 | [`docs/API.md`](docs/API.md) | 🇧🇷 Português |
 | [`docs/API.en.md`](docs/API.en.md) | 🇺🇸 English |
 | [`docs/meta-framework/README.md`](docs/meta-framework/README.md) | 🇧🇷 Português |
@@ -324,7 +333,7 @@ python3 scripts/validate-framework.py --path docs/meta-framework -v
 
 - **Frontend**: Keep CSS/JS modular — no inline styles or scripts in HTML
 - **Backend**: Follow Flask Blueprint patterns, use type hints, add docstrings
-- **API**: Maintain backward compatibility, document changes in `docs/API.md`
+- **API**: Maintain backward compatibility, document changes in `docs/API.en.md`
 - **Commits**: Use conventional commits (`feat:`, `fix:`, `docs:`, `refactor:`)
 
 ---
