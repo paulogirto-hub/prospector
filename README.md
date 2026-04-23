@@ -47,6 +47,7 @@
 - [Uso da API](#-uso-da-api)
 - [Pipeline de Prospecção](#-pipeline-de-prospecção)
 - [Variáveis de Ambiente](#-variáveis-de-ambiente)
+- [Meta-Framework](#-meta-framework-universal)
 - [Contribuindo](#-contribuindo)
 - [Licença](#-licença)
 
@@ -343,6 +344,42 @@ Veja [.env.example](./.env.example) para o template completo.
 | `CB_RECOVERY_TIMEOUT` | Tempo de recuperação do CB (seg) | `30` |
 | `GUNICORN_WORKERS` | Workers do Gunicorn | `4` |
 | `GUNICORN_TIMEOUT` | Timeout do Gunicorn (seg) | `300` |
+
+---
+
+## 📚 Meta-Framework Universal
+
+O Prospector foi construído usando a **Meta-Framework Universal de Engenharia de Sistemas** — um framework agnóstico com **71 módulos** organizados em hierarquia para criar sistemas de alta complexidade.
+
+A documentação completa do Meta-Framework está disponível em [`docs/meta-framework/`](./docs/meta-framework/):
+
+| Categoria | Módulos | Descrição |
+|-----------|---------|----------|
+| **Core** | CORE-01 a CORE-52 | Fundamentos: regras, modelagem, arquitetura, fluxos |
+| **Backend** | BACK-04 a BACK-48 | API, segurança, testes, versionamento |
+| **Frontend** | FRONT-30 a FRONT-46 | Componentes, UX, performance, PWA |
+| **Infra** | INFRA-18 a INFRA-60 | Deploy, migrations, disaster recovery, SLOs |
+| **Business** | BIZ-08 a BIZ-52 | Pagamentos, templates, growth, posicionamento |
+| **AI** | AI-09 a AI-59 | Gestão de APIs, streaming, RAG, orquestração |
+| **Ops** | OPS-22 a OPS-50 | Observabilidade, incidentes, performance, auto-cura |
+| **Advanced** | ADV-06 a ADV-27 | Integrações, multi-tenant, feature flags, DLQ |
+
+> **Comece por:** [`docs/meta-framework/MASTER.md`](./docs/meta-framework/MASTER.md) — visão estratégica e pipeline de execução.
+
+### Módulos aplicados no Prospector
+
+| Meta-Framework | Prospector |
+|---------------|------------|
+| CORE-01 (Regras de Negócio) | Pipeline de estados, validação, anti-abuso |
+| CORE-02 (Modelagem) | Schema de leads, searches, summary |
+| CORE-03 (Arquitetura) | Flask modular com Blueprints + App Factory |
+| BACK-04 (API) | REST endpoints com envelope `{success, data}` |
+| BACK-05 (Segurança) | Rate limiting, CORS, security headers |
+| AI-09 (Gestão APIs) | Circuit breaker, retry, fallback Ollama |
+| AI-12 (Streaming) | SSE para progresso de enriquecimento |
+| INFRA-19 (Deploy) | Docker Compose com nginx SSL |
+| OPS-22 (Observabilidade) | Health check, logging estruturado |
+| ADV-13 (Feature Flags) | Flags para etapas do pipeline |
 
 ---
 
