@@ -17,6 +17,26 @@
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+
+| Homepage | Busca |
+|:---:|:---:|
+| ![Homepage](./docs/screenshots/01-homepage.png) | ![Busca](./docs/screenshots/02-search-form.png) |
+
+| Resultados | Detalhes do Lead |
+|:---:|:---:|
+| ![Resultados](./docs/screenshots/03-results.png) | ![Detalhes](./docs/screenshots/04-lead-detail.png) |
+
+| Diagnóstico IA |
+|:---:|
+| ![Diagnóstico](./docs/screenshots/05-diagnosis.png) |
+
+</div>
+
+---
+
 ## 📋 Sumário
 
 - [O que é o Prospector?](#-o-que-é-o-prospector)
