@@ -13,6 +13,7 @@
 - [Health Check](#health-check)
 - [Search — Criar](#search--criar)
 - [Search — Consultar](#search--consultar)
+- [Search — Stream (SSE)](#search--stream-sse)
 - [Search — Deletar](#search--deletar)
 - [Search — Rediscovery](#search--rediscovery)
 - [Search — Enriquecer](#search--enriquecer)
@@ -219,6 +220,60 @@ Retorna os dados completos de uma busca, incluindo todos os leads e suas anális
 | `analyzing_leads` | Análise individual em andamento |
 | `analyzed` | Pipeline completa |
 | `error` | Erro durante processamento |
+
+---
+
+## Search — Stream (SSE)
+
+### `GET /api/search/{search_id}/stream`
+
+Server-Sent Events (SSE) endpoint for real-time search status updates. The server polls the search data every second and pushes updates to the client until a final state is reached.
+
+**Event Types**:
+
+| Event | Description |
+|-------|-------------|
+| `update` | Search state update (status, summary, progress) — sent every second while processing |
+| `complete` | Search reached a final state — sent once, then stream closes |
+| `error` | Search not found or server error — sent once, then stream closes |
+
+**Final States** (stream closes): `discovery`, `enriched`, `scored`, `market_analyzed`, `analyzed`, `error`, `diagnosed`
+
+**Response** (SSE stream):
+
+```
+event: update
+data: {"search_id":"abc123","status":"discovering","summary":{"queries_done":3,"queries_total":10,"current_query":"restaurantes curitiba"},"leads_count":0}
+
+event: update
+data: {"search_id":"abc123","status":"enriching","summary":{"queries_done":10,"queries_total":10},"leads_count":25}
+
+event: complete
+data: {"search_id":"abc123","status":"enriched","summary":{"total_results":25,"com_site":15},"leads_count":25}
+```
+
+> 💡 The `leads` array is omitted from SSE events to reduce payload size. Use `GET /api/search/{id}` for full data.
+
+> ⏱️ Maximum stream duration is 10 minutes (600 polls). The client should reconnect if needed.
+
+**Client Example (JavaScript)**:
+
+```javascript
+const es = new EventSource('/api/search/abc123/stream');
+es.addEventListener('update', (e) => {
+  const data = JSON.parse(e.data);
+  console.log(`Status: ${data.status}, Leads: ${data.leads_count}`);
+});
+es.addEventListener('complete', (e) => {
+  console.log('Search complete!');
+  es.close();
+});
+es.addEventListener('error', (e) => {
+  console.error('SSE error:', e);
+  es.close();
+  // Fallback to polling: GET /api/search/{id}
+});
+```
 
 ---
 

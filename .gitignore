@@ -18,6 +18,7 @@ env/
 data/
 *.json
 !package.json
+!manifest.json
 
 # ─── Docker ───
 .docker/

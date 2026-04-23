@@ -13,8 +13,9 @@ services:
       - prospector_data:/app/data
     networks:
       - prospector_net
-      - haasgrow
     restart: unless-stopped
+    ports:
+      - "5000:5000"
 
   frontend:
     build:
@@ -26,21 +27,10 @@ services:
       - backend
     networks:
       - prospector_net
-      - haasgrow
     restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.prospector-landing.rule=Host(`prospector.haasgrow.cloud`)"
-      - "traefik.http.routers.prospector-landing.entrypoints=websecure"
-      - "traefik.http.routers.prospector-landing.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.prospector-landing.service=prospector-landing"
-      - "traefik.http.services.prospector-landing.loadbalancer.server.port=80"
-      - "traefik.docker.network=haasgrow"
 
 volumes:
   prospector_data:
 
 networks:
   prospector_net:
-  haasgrow:
-    external: true
