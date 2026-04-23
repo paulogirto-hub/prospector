@@ -2,6 +2,8 @@
 
 # 🔍 Prospector
 
+**B2B Lead Prospecting Platform Powered by AI**
+
 **Plataforma de Prospecção B2B com Inteligência Artificial**
 
 [![Versão](https://img.shields.io/badge/v2.0.0-blue.svg)](https://github.com/)
@@ -9,9 +11,10 @@
 [![Python](https://img.shields.io/badge/Python-3.11-yellow.svg)](https://python.org)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://docker.com)
 
+*Find, enrich, qualify, and analyze B2B leads automatically with AI.*
 *Encontre, enriqueça, qualifique e analise leads B2B automaticamente com IA.*
 
-[📖 Documentação da API](./docs/API.md) · [📊 Benchmark](./BENCHMARK.md) · [🚀 Começando](#-instalação-e-configuração)
+[🌐 Landing Page](https://prospector.haasgrow.cloud) · [📖 Documentação da API](./docs/API.md) · [📊 Benchmark](./BENCHMARK.md) · [🚀 Começando](#-instalação-e-configuração)
 
 </div>
 
@@ -21,15 +24,15 @@
 
 <div align="center">
 
-| Homepage | Busca |
+| Homepage — Dashboard principal | Busca — Discovery de empresas por nicho e cidade |
 |:---:|:---:|
 | ![Homepage](./docs/screenshots/01-homepage.png) | ![Busca](./docs/screenshots/02-search-form.png) |
 
-| Resultados | Detalhes do Lead |
+| Resultados — Leads enriquecidos com score | Detalhes — Dados completos de cada lead |
 |:---:|:---:|
 | ![Resultados](./docs/screenshots/03-results.png) | ![Detalhes](./docs/screenshots/04-lead-detail.png) |
 
-| Diagnóstico IA |
+| Diagnóstico IA — Análise completa com pontos fortes, fracos e abordagem |
 |:---:|
 | ![Diagnóstico](./docs/screenshots/05-diagnosis.png) |
 
@@ -37,9 +40,38 @@
 
 ---
 
+## 🎯 O que é o Prospector?
+
+O Prospector é uma plataforma de prospecção B2B que automatiza o processo de encontrar e qualificar potenciais clientes. A partir de um nicho e localização, a plataforma descobre empresas via Google, enriquece os dados com scraping de sites, Instagram, Google Maps e BrasilAPI (CNPJ), qualifica cada lead com um score de presença digital de 0-100 e gera diagnósticos acionáveis com IA — tudo em pipeline assíncrona, com circuit breaker para resiliência e rate limiting para proteção.
+
+**Em resumo:** De horas de busca manual a minutos de prospecção inteligente.
+
+## 👥 Público-Alvo / Target Audience
+
+- 🏢 **Agências de marketing digital** — que precisam prospectar clientes para SEO, Ads e Social Media
+- 🏥 **Clínicas e consultórios** — que querem aumentar pacientes e analisar a concorrência local
+- 💼 **Empresas B2B** — que vendem serviços digitais e precisam de dados reais para prospecção
+- 📱 **Vendedores independentes** — que prospectam por WhatsApp e precisam de leads qualificados
+- 🚀 **Startups** — que precisam validar mercado rapidamente com dados reais
+
+## 😤 Problemas que Resolve / Pain Points
+
+- ⏰ **Horas buscando leads no Google** — Busca automática por nicho e cidade elimina trabalho manual
+- 🤷 **Não sabe quais empresas precisam do seu serviço** — Score de presença digital prioriza os melhores leads
+- 🗑️ **Perder tempo com leads que nunca vão comprar** — Qualificação por IA filtra leads sem potencial
+- 📞 **Sem dados de contato** — Enriquecimento automático com CNPJ, site, Instagram, telefone e email
+- 💬 **Não sabe como abordar** — Diagnóstico com IA sugere a primeira mensagem para WhatsApp
+- 🏃 **Concorrência mais rápida** — Pipeline automatizada de Discovery a Diagnosis em minutos
+- 📋 **Planilhas desorganizadas** — Dados centralizados, enriquecidos e sempre atualizados
+- ⚖️ **Não sabe quem abordar primeiro** — Score 0-100 ordena leads por potencial real
+
+---
+
 ## 📋 Sumário
 
 - [O que é o Prospector?](#-o-que-é-o-prospector)
+- [Público-Alvo](#-público-alvo--target-audience)
+- [Problemas que Resolve](#-problemas-que-resolve--pain-points)
 - [Features](#-features)
 - [Arquitetura](#-arquitetura)
 - [Stack Tecnológica](#-stack-tecnológica)
@@ -50,19 +82,6 @@
 - [Meta-Framework](#-meta-framework-universal)
 - [Contribuindo](#-contribuindo)
 - [Licença](#-licença)
-
----
-
-## 🎯 O que é o Prospector?
-
-O Prospector é uma ferramenta de prospecção B2B que automatiza o processo de encontrar e qualificar potenciais clientes. A partir de um nicho e localização, a plataforma:
-
-1. **Descobre** empresas via Google (Serper API)
-2. **Enriquece** os dados com scraping de sites, Instagram, Google Maps e BrasilAPI (CNPJ)
-3. **Qualifica** cada lead com um score de 0-100 baseado em presença digital
-4. **Analisa** com IA (GLM/DeepSeek/Qwen) para gerar diagnósticos acionáveis
-
-Tudo isso rodando em pipeline assíncrona, com circuit breaker para resiliência e rate limiting para proteção.
 
 ---
 

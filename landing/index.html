@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospector — Prospecção B2B com Inteligência Artificial</title>
+    <meta name="description" content="Encontre, enriqueça, qualifique e analise leads B2B automaticamente com IA. Pipeline inteligente de prospecção que transforma horas de busca em minutos.">
+    <meta name="keywords" content="prospecção B2B, inteligência artificial, lead generation, prospecção digital, CRM, scoring, enriquecimento de dados">
+    <meta name="author" content="HaasGrow">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prospector — Prospecção B2B com Inteligência Artificial">
+    <meta property="og:description" content="Encontre, enriqueça, qualifique e analise leads B2B automaticamente com IA. Pipeline inteligente que transforma horas de busca em minutos.">
+    <meta property="og:url" content="https://prospector.haasgrow.cloud">
+    <meta property="og:site_name" content="Prospector">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:image" content="https://prospector.haasgrow.cloud/screenshots/01-homepage.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prospector — Prospecção B2B com IA">
+    <meta name="twitter:description" content="Pipeline inteligente de prospecção B2B com IA. Discovery, Enrichment, Scoring e Diagnosis automáticos.">
+    <meta name="twitter:image" content="https://prospector.haasgrow.cloud/screenshots/01-homepage.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Prospector",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Plataforma de Prospecção B2B com Inteligência Artificial. Encontra, enriquece, qualifica e analise leads automaticamente.",
+        "url": "https://prospector.haasgrow.cloud",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "featureList": [
+            "Discovery — Busca automática de empresas por nicho e cidade",
+            "Enrichment — Enriquecimento com CNPJ, site, Instagram, Google Maps, telefone, email",
+            "Scoring — Score de presença digital de 0 a 100 por lead",
+            "Market Analysis — Análise de mercado com IA",
+            "Lead Analysis — Análise individual de cada lead com IA",
+            "Diagnosis — Diagnóstico completo com pontos fracos e abordagem WhatsApp"
+        ]
+    }
+    </script>
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://prospector.haasgrow.cloud">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #0B0F19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(255,255,255,0.04);
+            --bg-card-hover: rgba(255,255,255,0.08);
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.15);
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --text-tertiary: #6B7280;
+            --accent: #6366F1;
+            --accent-light: #818CF8;
+            --accent-dark: #4F46E5;
+            --accent-glow: rgba(99,102,241,0.3);
+            --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A78BFA 100%);
+            --gradient-hero: linear-gradient(180deg, #0B0F19 0%, #111827 50%, #0B0F19 100%);
+            --gradient-card: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.05) 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+            --shadow-glow: 0 0 40px rgba(99,102,241,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes slideRight {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 24px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(11,15,25,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+        }
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+        .navbar-brand .brand-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .navbar-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .navbar-links a:hover { color: var(--text-primary); }
+        .navbar-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 8px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem !important;
+            transition: all 0.2s;
+        }
+        .navbar-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-glow);
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(139,92,246,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.3);
+            color: var(--accent-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .hero-badge .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22C55E;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+        .hero h1 .gradient-text {
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 6s ease infinite;
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: none;
+            outline: none;
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(99,102,241,0.5);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 60px;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 100px 24px;
+            position: relative;
+        }
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.2);
+            color: var(--accent-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== WHAT IS ===== */
+        .what-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .what-text h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+        .what-text h2 .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .what-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        .what-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .what-highlight {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .what-highlight .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(99,102,241,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+        .what-screenshot {
+            position: relative;
+        }
+        .what-screenshot img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+        .what-screenshot:hover img {
+            transform: scale(1.02);
+        }
+        .what-screenshot::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            border-radius: var(--radius-xl);
+            z-index: -1;
+        }
+
+        /* ===== PAIN POINTS ===== */
+        .pain-bg {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+        }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .pain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .pain-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(239,68,68,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(239,68,68,0.1);
+        }
+        .pain-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .pain-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .pain-card p {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-glow);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: var(--gradient-card);
+            border: 1px solid rgba(99,102,241,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .feature-card .feature-accent {
+            color: var(--accent-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== PIPELINE ===== */
+        .pipeline-bg {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+        }
+        .pipeline-steps {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .pipeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 180px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+        .pipeline-step-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        .pipeline-step:hover .pipeline-step-icon {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+            transform: scale(1.1);
+        }
+        .pipeline-step-number {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pipeline-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .pipeline-step p {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+        }
+        .pipeline-connector {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-dark), var(--accent-light));
+            margin-top: 36px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .pipeline-connector::after {
+            content: '→';
+            position: absolute;
+            right: -6px;
+            top: -9px;
+            color: var(--accent-light);
+            font-size: 1rem;
+        }
+
+        /* ===== AUDIENCE ===== */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .audience-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .audience-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+        .audience-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .audience-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .audience-card p {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+        }
+
+        /* ===== SCREENSHOTS ===== */
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .screenshot-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .screenshot-item:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .screenshot-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .screenshot-item:hover img {
+            transform: scale(1.02);
+        }
+        .screenshot-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 20px;
+            background: linear-gradient(transparent, rgba(11,15,25,0.95));
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .screenshot-item.full {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== STACK ===== */
+        .stack-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+        .stack-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .stack-badge:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+        .stack-badge .badge-icon {
+            font-size: 1.2rem;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.08) 100%);
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: var(--radius-xl);
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(99,102,241,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .cta-box h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .cta-box p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+            position: relative;
+        }
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            position: relative;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 48px 24px 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .footer-brand .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .footer-brand span {
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .footer-desc {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+        .footer-links {
+            display: flex;
+            gap: 48px;
+        }
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .what-grid { gap: 40px; }
+        }
+        @media (max-width: 768px) {
+            .navbar-links { display: none; }
+            .navbar-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(11,15,25,0.98);
+                backdrop-filter: blur(20px);
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            .mobile-toggle { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-stats { gap: 24px; }
+            .hero-stat-number { font-size: 1.5rem; }
+            .what-grid { grid-template-columns: 1fr; }
+            .pain-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .screenshots-grid { grid-template-columns: 1fr; }
+            .pipeline-steps { flex-direction: column; align-items: center; }
+            .pipeline-connector { width: 2px; height: 36px; margin: 0; }
+            .pipeline-connector::after { display: none; }
+            .audience-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { flex-direction: column; }
+            .footer-links { flex-direction: column; gap: 32px; }
+            .cta-box { padding: 48px 24px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 100px 16px 60px; }
+            section { padding: 64px 16px; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .audience-grid { grid-template-columns: 1fr; }
+            .stack-badges { gap: 10px; }
+            .stack-badge { padding: 10px 18px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="navbar-brand">
+                <div class="brand-icon">🔍</div>
+                Prospector
+            </a>
+            <div class="navbar-links" id="navLinks">
+                <a href="#what">O que é</a>
+                <a href="#pain">Problemas</a>
+                <a href="#features">Funcionalidades</a>
+                <a href="#pipeline">Pipeline</a>
+                <a href="#screenshots">Screenshots</a>
+                <a href="#audience">Para Quem</a>
+                <a href="https://github.com/paulogirto-hub/prospector" target="_blank" class="navbar-cta">GitHub</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <canvas class="hero-particles" id="particles"></canvas>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                Pipeline inteligente de prospecção
+            </div>
+            <h1>
+                Encontre leads B2B<br>
+                <span class="gradient-text">10x mais rápido</span>
+            </h1>
+            <p class="hero-subtitle">
+                O Prospector encontra, enriquece, qualifica e analisa leads automaticamente com IA. De horas de busca manual a minutos de prospecção inteligente.
+            </p>
+            <div class="hero-actions">
+                <a href="https://prospector.haasgrow.cloud" target="_blank" class="btn btn-primary">
+                    🚀 Começar Agora
+                </a>
+                <a href="https://github.com/paulogirto-hub/prospector" target="_blank" class="btn btn-secondary">
+                    ⭐ Ver no GitHub
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5</div>
+                    <div class="hero-stat-label">Etapas de IA</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">0-100</div>
+                    <div class="hero-stat-label">Score Digital</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">∞</div>
+                    <div class="hero-stat-label">Nichos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Is -->
+    <section id="what">
+        <div class="section-inner">
+            <div class="what-grid">
+                <div class="what-text reveal">
+                    <div class="section-tag">🔍 O que é</div>
+                    <h2>Prospecção B2B<br><span class="gradient-text">com Inteligência Artificial</span></h2>
+                    <p>
+                        O Prospector é uma plataforma que automatiza todo o pipeline de prospecção B2B. A partir de um nicho e cidade, ele descobre empresas, enriquece os dados, qualifica cada lead com um score de presença digital e gera diagnósticos acionáveis com IA.
+                    </p>
+                    <p>
+                        Tudo isso em pipeline assíncrona, com circuit breaker para resiliência e rate limiting para proteção. Sem planilha, sem busca manual, sem achismo.
+                    </p>
+                    <div class="what-highlights">
+                        <div class="what-highlight">
+                            <div class="icon">🔍</div>
+                            <span>Busca automática de empresas por nicho e cidade</span>
+                        </div>
+                        <div class="what-highlight">
+                            <div class="icon">📊</div>
+                            <span>Enriquecimento com CNPJ, site, Instagram, Maps</span>
+                        </div>
+                        <div class="what-highlight">
+                            <div class="icon">🎯</div>
+                            <span>Score de presença digital de 0 a 100</span>
+                        </div>
+                        <div class="what-highlight">
+                            <div class="icon">🧠</div>
+                            <span>Análise de mercado e diagnóstico por IA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="what-screenshot reveal reveal-delay-2">
+                    <img src="screenshots/01-homepage.png" alt="Prospector Dashboard - Visão geral da plataforma de prospecção B2B com IA" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section id="pain" class="pain-bg">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div class="section-tag">😤 Dores do Público</div>
+                <h2 class="section-title">Se você sente isso,<br>o Prospector é pra você</h2>
+                <p class="section-desc">Problemas que a prospecção manual causa todo dia — e que a IA resolve automaticamente.</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card reveal">
+                    <div class="pain-icon">⏰</div>
+                    <h3>Horas buscando leads no Google</h3>
+                    <p>Você passa mais tempo procurando do que vendendo. Busca manual é lenta, repetitiva e frustrante.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-1">
+                    <div class="pain-icon">🤷</div>
+                    <h3>Não sabe quem precisa do seu serviço</h3>
+                    <p>Sem dados, é chute. Você aborda empresas que não são seu público ideal e perde tempo.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-1">
+                    <div class="pain-icon">🗑️</div>
+                    <h3>Leads que nunca vão comprar</h3>
+                    <p>Sem qualificação, você gasta energia com leads sem potencial. É como procurar agulha no palheiro.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-2">
+                    <div class="pain-icon">📞</div>
+                    <h3>Sem dados de contato</h3>
+                    <p>Não tem telefone, email ou CNPJ? Sem contato, não tem conversa. E não tem venda.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-2">
+                    <div class="pain-icon">💬</div>
+                    <h3>Não sabe como abordar</h3>
+                    <p>A primeira mensagem é crucial, mas você não sabe o que dizer. Abordagem genérica = ignorada.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-3">
+                    <div class="pain-icon">🏃</div>
+                    <h3>Concorrência mais rápida</h3>
+                    <p>Enquanto você procura, o concorrente com ferramenta já abordou. Velocidade é tudo em vendas.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-3">
+                    <div class="pain-icon">📋</div>
+                    <h3>Planilhas desorganizadas</h3>
+                    <p>Dados espalhados, desatualizados, duplicados. Você perde mais tempo organizando do que vendendo.</p>
+                </div>
+                <div class="pain-card reveal reveal-delay-4">
+                    <div class="pain-icon">⚖️</div>
+                    <h3>Não sabe quem abordar primeiro</h3>
+                    <p>Sem priorização, você gasta tempo com o lead errado. Score automático resolve isso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div class="section-tag">✨ Funcionalidades</div>
+                <h2 class="section-title">Pipeline completo de<br><span class="gradient-text" style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">prospecção inteligente</span></h2>
+                <p class="section-desc">Cada etapa do processo automatizada com dados reais e análise de IA.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-accent">Discovery</div>
+                    <h3>Busca Automática</h3>
+                    <p>Encontra empresas por nicho e cidade via Serper API. Deduplicação fuzzy e variações de query para máxima cobertura.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-accent">Enrichment</div>
+                    <h3>Enriquecimento Total</h3>
+                    <p>CNPJ, site, Instagram, Google Maps, telefone, email — tudo extraído e organizado automaticamente.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-accent">Scoring</div>
+                    <h3>Score Digital 0-100</h3>
+                    <p>Pontuação de presença digital baseada em site, redes sociais, Google Ads, Maps e muito mais. Priorize os melhores leads.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <div class="feature-icon">🧠</div>
+                    <div class="feature-accent">Market Analysis</div>
+                    <h3>Análise de Mercado</h3>
+                    <p>Visão macro do nicho com IA. Oportunidades, gaps e concorrência mapeados automaticamente.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-accent">Lead Analysis</div>
+                    <h3>Análise Individual</h3>
+                    <p>Diagnóstico detalhado de cada lead com IA. Pontos fracos, fortes e oportunidades de abordagem.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-3">
+                    <div class="feature-icon">🔬</div>
+                    <div class="feature-accent">Diagnosis</div>
+                    <h3>Diagnóstico Completo</h3>
+                    <p>Análise profunda com pontos fracos, fortes, oportunidades e sugestão de primeira mensagem para WhatsApp.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-accent">Rediscovery</div>
+                    <h3>Re-busca Inteligente</h3>
+                    <p>Atualize as buscas mantendo todos os dados já enriquecidos. Seus leads ficam sempre atualizados.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-3">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-accent">WhatsApp Direct</div>
+                    <h3>Abordagem Direta</h3>
+                    <p>Link direto para WhatsApp com mensagem sugerida pela IA. Do diagnóstico à ação em um clique.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-4">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-accent">Circuit Breaker</div>
+                    <h3>Resiliência Total</h3>
+                    <p>Se um modelo de IA falha, troca para o próximo automaticamente. Pipeline nunca para.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pipeline -->
+    <section id="pipeline" class="pipeline-bg">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div class="section-tag">🔄 Pipeline</div>
+                <h2 class="section-title">Como funciona</h2>
+                <p class="section-desc">5 etapas automáticas que transformam um nicho e cidade em leads qualificados prontos para abordagem.</p>
+            </div>
+            <div class="pipeline-steps reveal">
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon">
+                        🔍
+                        <span class="pipeline-step-number">1</span>
+                    </div>
+                    <h4>Discovery</h4>
+                    <p>Busca empresas no Google por nicho e cidade</p>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon">
+                        📊
+                        <span class="pipeline-step-number">2</span>
+                    </div>
+                    <h4>Enrich</h4>
+                    <p>Enriquece com CNPJ, site, redes, contato</p>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon">
+                        🎯
+                        <span class="pipeline-step-number">3</span>
+                    </div>
+                    <h4>Score</h4>
+                    <p>Score 0-100 de presença digital</p>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon">
+                        🧠
+                        <span class="pipeline-step-number">4</span>
+                    </div>
+                    <h4>Analyze</h4>
+                    <p>IA analisa mercado e cada lead</p>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step">
+                    <div class="pipeline-step-icon">
+                        🔬
+                        <span class="pipeline-step-number">5</span>
+                    </div>
+                    <h4>Diagnose</h4>
+                    <p>Diagnóstico completo + abordagem</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div class="section-tag">📸 Screenshots</div>
+                <h2 class="section-title">Veja o Prospector em ação</h2>
+                <p class="section-desc">Interface moderna, dark theme, com todos os dados de prospecção organizados e acionáveis.</p>
+            </div>
+            <div class="screenshots-grid">
+                <div class="screenshot-item reveal">
+                    <img src="screenshots/01-homepage.png" alt="Prospector Homepage - Dashboard principal da plataforma" loading="lazy">
+                    <div class="screenshot-label">🏠 Dashboard Principal</div>
+                </div>
+                <div class="screenshot-item reveal reveal-delay-1">
+                    <img src="screenshots/02-search-form.png" alt="Prospector Formulário de Busca - Discovery de empresas por nicho e cidade" loading="lazy">
+                    <div class="screenshot-label">🔍 Formulário de Busca</div>
+                </div>
+                <div class="screenshot-item reveal reveal-delay-1">
+                    <img src="screenshots/03-results.png" alt="Prospector Resultados - Lista de leads enriquecidos com score e dados" loading="lazy">
+                    <div class="screenshot-label">📊 Resultados com Score</div>
+                </div>
+                <div class="screenshot-item reveal reveal-delay-2">
+                    <img src="screenshots/04-lead-detail.png" alt="Prospector Detalhes do Lead - Dados enriquecidos de cada empresa" loading="lazy">
+                    <div class="screenshot-label">📋 Detalhes do Lead</div>
+                </div>
+                <div class="screenshot-item full reveal reveal-delay-2">
+                    <img src="screenshots/05-diagnosis.png" alt="Prospector Diagnóstico IA - Análise completa com pontos fortes, fracos e abordagem" loading="lazy">
+                    <div class="screenshot-label">🧠 Diagnóstico com IA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience -->
+    <section id="audience" class="pipeline-bg">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div class="section-tag">👥 Para Quem é</div>
+                <h2 class="section-title">Feito pra quem precisa<br><span class="gradient-text" style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">prospectar com inteligência</span></h2>
+                <p class="section-desc">Do solo à startup, do consultório à agência. Se você vende B2B, o Prospector é seu aliado.</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-card reveal">
+                    <div class="audience-emoji">🏢</div>
+                    <h3>Agências de Marketing</h3>
+                    <p>Prospecte clientes que precisam de SEO, Ads e Social Media com dados reais de presença digital.</p>
+                </div>
+                <div class="audience-card reveal reveal-delay-1">
+                    <div class="audience-emoji">🏥</div>
+                    <h3>Clínicas e Consultórios</h3>
+                    <p>Encontre pacientes em potencial e analise a presença digital da concorrência na sua região.</p>
+                </div>
+                <div class="audience-card reveal reveal-delay-2">
+                    <div class="audience-emoji">💼</div>
+                    <h3>Empresas B2B</h3>
+                    <p>Venda serviços digitais com prospecção baseada em dados, não em achismos.</p>
+                </div>
+                <div class="audience-card reveal reveal-delay-3">
+                    <div class="audience-emoji">📱</div>
+                    <h3>Vendedores por WhatsApp</h3>
+                    <p>Leads qualificados com telefone e mensagem sugerida. Do diagnóstico à abordagem em um clique.</p>
+                </div>
+                <div class="audience-card reveal reveal-delay-4">
+                    <div class="audience-emoji">🚀</div>
+                    <h3>Startups</h3>
+                    <p>Valide mercado rapidamente com dados reais. Discovery rápido, enriquecimento automático.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="stack">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div class="section-tag">🛠️ Stack Tecnológica</div>
+                <h2 class="section-title">Construído com as<br>melhores ferramentas</h2>
+            </div>
+            <div class="stack-badges reveal">
+                <div class="stack-badge"><span class="badge-icon">🐍</span> Python / Flask</div>
+                <div class="stack-badge"><span class="badge-icon">🤖</span> Ollama Cloud (IA)</div>
+                <div class="stack-badge"><span class="badge-icon">🔎</span> Serper API</div>
+                <div class="stack-badge"><span class="badge-icon">🐳</span> Docker</div>
+                <div class="stack-badge"><span class="badge-icon">🌐</span> Nginx</div>
+                <div class="stack-badge"><span class="badge-icon">🐘</span> PostgreSQL</div>
+                <div class="stack-badge"><span class="badge-icon">🔒</span> Circuit Breaker</div>
+                <div class="stack-badge"><span class="badge-icon">⚡</span> Rate Limiting</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+        <div class="section-inner">
+            <div class="cta-box reveal">
+                <h2>Comece a prospectar<br><span class="gradient-text" style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">com inteligência</span></h2>
+                <p>De horas de busca manual a minutos de prospecção inteligente. O Prospector faz o trabalho pesado pra você.</p>
+                <div class="cta-actions">
+                    <a href="https://prospector.haasgrow.cloud" target="_blank" class="btn btn-primary">
+                        🚀 Começar Agora
+                    </a>
+                    <a href="https://github.com/paulogirto-hub/prospector" target="_blank" class="btn btn-secondary">
+                        ⭐ Ver no GitHub
+                    </a>
+                </div>
+                <p class="cta-note">Open source · Self-hosted · Sem limites</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <div class="brand-icon">🔍</div>
+                        <span>Prospector</span>
+                    </div>
+                    <p class="footer-desc">Plataforma de Prospecção B2B com Inteligência Artificial. Encontre, enriqueça, qualifique e analise leads automaticamente.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Produto</h4>
+                        <a href="#features">Funcionalidades</a>
+                        <a href="#pipeline">Pipeline</a>
+                        <a href="#screenshots">Screenshots</a>
+                        <a href="https://prospector.haasgrow.cloud" target="_blank">Demo</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Recurso</h4>
+                        <a href="https://github.com/paulogirto-hub/prospector" target="_blank">GitHub</a>
+                        <a href="https://github.com/paulogirto-hub/prospector/blob/main/docs/API.md" target="_blank">API Docs</a>
+                        <a href="https://github.com/paulogirto-hub/prospector/blob/main/BENCHMARK.md" target="_blank">Benchmark</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contato</h4>
+                        <a href="mailto:contato@haasgrow.cloud">contato@haasgrow.cloud</a>
+                        <a href="https://github.com/paulogirto-hub" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Prospector. Feito com 💜 e ☕ no Brasil.</span>
+                <span>Open source sob licença MIT</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ===== Scroll Reveal =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== Navbar Scroll =====
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+    });
+
+    // ===== Mobile Menu =====
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+    // Close menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // ===== Smooth Scroll for anchor links =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ===== Particles =====
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+
+    function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+
+    function createParticles() {
+        particles = [];
+        const count = Math.min(60, Math.floor(canvas.width * canvas.height / 15000));
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                radius: Math.random() * 1.5 + 0.5,
+                opacity: Math.random() * 0.5 + 0.1
+            });
+        }
+    }
+
+    function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+            // Move
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            // Draw particle
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+            ctx.fill();
+
+            // Draw connections
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = p.x - particles[j].x;
+                const dy = p.y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(99, 102, 241, ${0.08 * (1 - dist / 120)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        });
+        animationId = requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        createParticles();
+    });
+
+    // Pause particles when not visible
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (!animationId) drawParticles();
+            } else {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        });
+    });
+    heroObserver.observe(canvas.parentElement);
+    </script>
+</body>
+</html>
