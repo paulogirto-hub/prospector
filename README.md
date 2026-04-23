@@ -1,33 +1,35 @@
-# 🔍 Prospector — AI-Powered B2B Prospection
+# 🔍 Prospector — Prospecção B2B com Inteligência Artificial
 
-**Prospector** is a full-stack B2B lead generation and analysis tool that combines Google Search scraping, business data enrichment, AI-powered market analysis, and individual lead diagnosis — all in a single pipeline.
+**Prospector** é uma ferramenta full-stack de geração e análise de leads B2B que combina scraping do Google, enriquecimento de dados empresariais, análise de mercado por IA e diagnóstico individual de leads — tudo em um único pipeline.
 
 ![License](https://img.shields.io/badge/license-MIT-blue) ![Python](https://img.shields.io/badge/python-3.11-blue) ![Docker](https://img.shields.io/badge/docker-ready-brightgreen)
+
+**🇺🇸 [Read in English](README.en.md)**
 
 ---
 
 ## ✨ Features
 
-- **🔍 Discovery** — Search businesses by niche, city, and state using Google (Serper API)
-- **📋 Enrichment** — Scrape websites, Instagram, Google Maps, and BrasilAPI (CNPJ) for each lead
-- **⭐ Scoring** — Automatic 0-100 presence digital score per lead
-- **📊 Market Analysis** — AI-generated macro market insights (opportunities, competition, entry strategy)
-- **🧠 Lead Analysis** — Individual AI diagnosis per lead (weaknesses, strengths, WhatsApp approach, revenue estimates)
-- **🔬 Full Diagnosis** — Deep-dive diagnostic per lead with urgency rating, suggested services, and WhatsApp message template
-- **📱 PWA** — Installable Progressive Web App with offline caching
-- **⚡ Real-time Updates** — SSE streaming with automatic polling fallback
-- **🎯 Filters & Sort** — Filter leads by presence flags, search by name, sort by score/name
-- **🛡️ XSS-safe** — Tagged template literal rendering prevents XSS injection
-- **🎨 Modular Frontend** — CSS/JS separated into modules (state, API, components, app)
+- **🔍 Discovery** — Busca empresas por nicho, cidade e estado via Google (Serper API)
+- **📋 Enrichment** — Scraping de sites, Instagram, Google Maps e BrasilAPI (CNPJ) para cada lead
+- **⭐ Scoring** — Score automático de 0-100 de presença digital por lead
+- **📊 Market Analysis** — Insights macro de mercado gerados por IA (oportunidades, concorrência, estratégia)
+- **🧠 Lead Analysis** — Diagnóstico individual por IA (fraquezas, forças, abordagem WhatsApp, estimativa de receita)
+- **🔬 Full Diagnosis** — Diagnóstico profundo por lead com rating de urgência, serviços sugeridos e template de mensagem WhatsApp
+- **📱 PWA** — Progressive Web App instalável com cache offline
+- **⚡ Real-time Updates** — SSE streaming com fallback automático para polling
+- **🎯 Filters & Sort** — Filtros por flags de presença, busca por nome, ordenação por score/nome
+- **🛡️ XSS-safe** — Tagged template literal com escape automático contra XSS
+- **🎨 Modular Frontend** — CSS/JS separados em módulos (state, API, components, app)
 
 ---
 
 ## 📸 Screenshots
 
-### 🔍 Busca de Empresas
+### 🔍 Dashboard de Buscas
 
 <p align="center">
-  <img src="docs/screenshots/01-homepage.png" alt="Homepage — Dashboard com histórico de buscas" width="700">
+  <img src="docs/screenshots/01-homepage.png" alt="Dashboard com histórico de buscas recentes" width="700">
 </p>
 
 Dashboard principal com histórico de buscas recentes e acesso rápido a pesquisas anteriores.
@@ -35,7 +37,7 @@ Dashboard principal com histórico de buscas recentes e acesso rápido a pesquis
 ### 📋 Formulário de Pesquisa
 
 <p align="center">
-  <img src="docs/screenshots/02-search-form.png" alt="Formulário de pesquisa por nicho e cidade" width="700">
+  <img src="docs/screenshots/02-search-form.png" alt="Formulário de busca por nicho e cidade" width="700">
 </p>
 
 Busca por nicho (ex: restaurante, dentista) e cidade — o pipeline completa automaticamente.
@@ -66,18 +68,43 @@ Diagnóstico individual por IA: fraquezas, oportunidades, urgência e mensagem d
 
 ---
 
-## 🏗️ Architecture
+## 🎯 Público-Alvo
+
+| Perfil | Uso |
+|--------|-----|
+| **Agências de marketing** | Prospecção de clientes B2B para oferecer serviços digitais |
+| **Consultores de vendas** | Enriquecimento de leads e diagnóstico de abordagem |
+| **SDRs / Pré-vendas** | Busca automática de empresas por nicho e localização |
+| **Donos de negócio local** | Análise de concorrência e oportunidades no próprio mercado |
+| **Startups B2B** | Validação de mercado e outbound automatizado |
+
+## 💔 Problemas que Resolve
+
+| Dor | Como Resolve |
+|-----|-------------|
+| **Encontrar leads qualificados** | Busca automática via Google, Maps e CNPJ |
+| **Dados incompletos** | Enriquecimento com site, Instagram, telefone, email, CNPJ |
+| **Sem priorização** | Score 0-100 de presença digital — foco nos que mais precisam |
+| **Abordagem genérica** | Diagnóstico de IA com mensagem personalizada para WhatsApp |
+| **Perda de tempo com leads ruins** | Filtros por plataforma, score e flags de presença |
+| **Concorrência cega** | Análise de mercado com IA mostrando oportunidades e gaps |
+| **Processo manual e lento** | Pipeline completa: busca → enriquece → pontua → analisa em minutos |
+| **Sem diagnóstico individual** | Cada lead recebe análise de fraquezas, oportunidades e urgência |
+
+---
+
+## 🏗️ Arquitetura
 
 ```
 ┌─────────────────────────────────────────────────┐
 │                   Frontend                       │
-│   nginx:alpine — Static files + reverse proxy    │
+│   nginx:alpine — Arquivos estáticos + proxy     │
 │   ├─ index.html (shell)                          │
 │   ├─ css/styles.css (design system)              │
-│   ├─ js/state.js (reactive state)                │
-│   ├─ js/api.js (fetch + SSE client)              │
-│   ├─ js/components.js (XSS-safe rendering)        │
-│   ├─ js/app.js (orchestrator)                    │
+│   ├─ js/state.js (estado reativo)                │
+│   ├─ js/api.js (fetch + cliente SSE)              │
+│   ├─ js/components.js (renderização XSS-safe)     │
+│   ├─ js/app.js (orquestrador)                    │
 │   ├─ manifest.json + sw.js (PWA)                 │
 │   └─ icons/ (192px + 512px)                      │
 ├─────────────────────────────────────────────────┤
@@ -87,46 +114,46 @@ Diagnóstico individual por IA: fraquezas, oportunidades, urgência e mensagem d
 │   ├─ /api/search/<id>/stream (SSE)               │
 │   ├─ /api/history                                │
 │   ├─ /api/search/<id>/lead/<id> (CRUD)           │
-│   └─ /api/health (circuit breaker status)        │
+│   └─ /api/health (status do circuit breaker)    │
 ├─────────────────────────────────────────────────┤
-│              External Services                    │
+│              Serviços Externos                    │
 │   ├─ Serper API (Google Search)                  │
 │   ├─ BrasilAPI (CNPJ lookup)                     │
-│   ├─ Google Maps (business info)                 │
-│   └─ Ollama Cloud (GLM-5.1 / MiniMax)            │
+│   ├─ Google Maps (info de negócios)              │
+│   └─ Ollama Cloud (GLM-5.1 / MiniMax)           │
 └─────────────────────────────────────────────────┘
 ```
 
-### Pipeline Flow
+### Fluxo do Pipeline
 
 ```
 Discovery → Enrich → Score → Analyze Market → Analyze Leads → Diagnose
 ```
 
-Each step can be re-run independently. The frontend supports running the full pipeline or individual steps.
+Cada etapa pode ser re-executada independentemente. O frontend suporta rodar o pipeline completo ou etapas individuais.
 
 ---
 
 ## 🚀 Quick Start
 
-### Docker Compose (Recommended)
+### Docker Compose (Recomendado)
 
 ```bash
-# Clone the repository
+# Clone o repositório
 git clone https://github.com/paulogirto-hub/prospector.git
 cd prospector
 
-# Set your API keys
+# Configure suas API keys
 cp .env.example .env
-# Edit .env with your SERPER_KEY and OLLAMA_KEY
+# Edite .env com suas SERPER_KEY e OLLAMA_KEY
 
-# Start everything
+# Suba tudo
 docker compose up -d --build
 
-# Access at http://localhost:8088
+# Acesse em http://localhost:8088
 ```
 
-### Manual Setup
+### Setup Manual
 
 <details>
 <summary>Backend (Python)</summary>
@@ -137,14 +164,14 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-# Set environment variables
-export SERPER_KEY=your_serper_api_key
-export OLLAMA_KEY=your_ollama_api_key
+# Configure as variáveis de ambiente
+export SERPER_KEY=sua_serper_api_key
+export OLLAMA_KEY=sua_ollama_api_key
 export OLLAMA_BASE=https://ollama.com/v1
 export OLLAMA_MODEL=glm-5.1
 export DATA_DIR=./data
 
-# Run
+# Rode
 gunicorn app.main:app --bind 0.0.0.0:5000 --workers 4 --timeout 300
 ```
 
@@ -154,124 +181,106 @@ gunicorn app.main:app --bind 0.0.0.0:5000 --workers 4 --timeout 300
 <summary>Frontend (nginx)</summary>
 
 ```bash
-# Copy frontend files to nginx serve directory
-# Or serve with any static file server that proxies /api/ to the backend
+# Copie os arquivos do frontend para o diretório do nginx
+# Ou sirva com qualquer servidor estático que faça proxy de /api/ para o backend
 ```
 
 </details>
 
 ---
 
-## ⚙️ Environment Variables
+## ⚙️ Variáveis de Ambiente
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
+| Variável | Obrigatória | Default | Descrição |
+|----------|-------------|---------|-----------|
 | `SERPER_KEY` | ✅ | — | Serper API key (Google Search) |
-| `OLLAMA_KEY` | ✅ | — | Ollama Cloud API key (AI) |
-| `OLLAMA_BASE` | ❌ | `https://ollama.com/v1` | Ollama API base URL |
-| `OLLAMA_MODEL` | ❌ | `glm-5.1` | AI model for analysis/diagnosis |
-| `DATA_DIR` | ❌ | `./data` | Directory for persistent search data |
+| `OLLAMA_KEY` | ✅ | — | Ollama Cloud API key (IA) |
+| `OLLAMA_BASE` | ❌ | `https://ollama.com/v1` | URL base da API Ollama |
+| `OLLAMA_MODEL` | ❌ | `glm-5.1` | Modelo de IA para análise/diagnóstico |
+| `DATA_DIR` | ❌ | `./data` | Diretório para dados persistentes |
 
 ---
 
-## 📡 API Documentation
+## 📡 Documentação da API
 
-Full API reference available at [`docs/API.md`](docs/API.md).
+Referência completa da API disponível em:
 
-### Key Endpoints
+| Arquivo | Idioma |
+|---------|--------|
+| [`docs/API.md`](docs/API.md) | 🇧🇷 Português |
+| [`docs/API.en.md`](docs/API.en.md) | 🇺🇸 English |
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/search` | Create new search (starts discovery) |
-| `GET` | `/api/search/{id}` | Get search data + leads |
-| `GET` | `/api/search/{id}/stream` | SSE stream for real-time updates |
-| `DELETE` | `/api/search/{id}` | Delete search |
-| `POST` | `/api/search/{id}/enrich` | Enrich leads (CNPJ, site, Instagram) |
-| `POST` | `/api/search/{id}/score` | Calculate scores |
-| `POST` | `/api/search/{id}/analyze-market` | AI market analysis |
-| `POST` | `/api/search/{id}/analyze-leads` | AI individual lead analysis |
-| `POST` | `/api/search/{id}/analyze` | Run full pipeline |
-| `GET` | `/api/history` | List all searches |
-| `PUT` | `/api/search/{id}/lead/{lid}` | Update lead fields |
-| `DELETE` | `/api/search/{id}/lead/{lid}` | Delete a lead |
-| `POST` | `/api/search/{id}/diagnose/{lid}` | Generate AI diagnosis |
+### Principais Endpoints
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| `POST` | `/api/search` | Criar nova busca (inicia discovery) |
+| `GET` | `/api/search/{id}` | Obter dados da busca + leads |
+| `GET` | `/api/search/{id}/stream` | SSE stream para atualizações em tempo real |
+| `DELETE` | `/api/search/{id}` | Deletar busca |
+| `POST` | `/api/search/{id}/enrich` | Enriquecer leads (CNPJ, site, Instagram) |
+| `POST` | `/api/search/{id}/score` | Calcular scores |
+| `POST` | `/api/search/{id}/analyze-market` | Análise de mercado por IA |
+| `POST` | `/api/search/{id}/analyze-leads` | Análise individual de leads por IA |
+| `POST` | `/api/search/{id}/analyze` | Rodar pipeline completa |
+| `GET` | `/api/history` | Listar todas as buscas |
+| `PUT` | `/api/search/{id}/lead/{lid}` | Atualizar campos do lead |
+| `DELETE` | `/api/search/{id}/lead/{lid}` | Deletar um lead |
+| `POST` | `/api/search/{id}/diagnose/{lid}` | Gerar diagnóstico por IA |
 
 ---
 
-## 🧪 Development
+## 🧪 Desenvolvimento
 
-### Frontend Architecture
+### Arquitetura do Frontend
 
-The frontend uses a modular architecture with ES modules:
+O frontend usa arquitetura modular com ES modules:
 
 ```
 frontend/
-├── index.html          # HTML shell (no inline CSS/JS)
-├── css/styles.css      # Design system + all styles (~31KB)
+├── index.html          # HTML shell (sem CSS/JS inline)
+├── css/styles.css      # Design system + todos os estilos (~31KB)
 ├── js/
-│   ├── state.js        # Reactive Proxy-based state management
-│   ├── api.js          # Fetch wrapper + SSE client with polling fallback
-│   ├── components.js   # XSS-safe rendering (html`` tagged template)
-│   └── app.js          # Main orchestrator + event handlers
-├── manifest.json       # PWA manifest
-├── sw.js               # Service worker (cache-first for static, network for API)
-└── icons/              # PWA icons (192px, 512px)
+│   ├── state.js        # Gerenciamento de estado reativo com Proxy
+│   ├── api.js          # Fetch wrapper + cliente SSE com fallback para polling
+│   ├── components.js   # Renderização XSS-safe (html`` tagged template)
+│   └── app.js          # Orquestrador principal + event handlers
+├── manifest.json       # Manifest PWA
+├── sw.js               # Service worker (cache-first para estáticos, network para API)
+└── icons/              # Ícones PWA (192px, 512px)
 ```
 
-### Key Design Decisions
+### Decisões de Design Chave
 
-1. **XSS Safety** — `html` tagged template auto-escapes `${}` interpolations. Use `rawHtml()` only for trusted content.
-2. **SSE + Polling** — `connectSSE()` tries EventSource first, falls back to 3s polling. The backend `/stream` endpoint is optional — the app works with polling alone.
-3. **Reactive State** — `AppState` uses JavaScript Proxy to notify subscribers on change. Components re-render on state updates.
-4. **Skeleton Screens** — `showSkeleton*()` functions display placeholder UI during loading.
-5. **Error Handling** — `safeFetch()` wraps all API calls with retry support. `renderErrorCard()` shows actionable error messages.
+1. **Segurança XSS** — `html` tagged template escapa automaticamente interpolações `${}`. Use `rawHtml()` apenas para conteúdo confiável.
+2. **SSE + Polling** — `connectSSE()` tenta EventSource primeiro, com fallback para polling de 3s. O endpoint `/stream` é opcional — o app funciona só com polling.
+3. **Estado Reativo** — `AppState` usa JavaScript Proxy para notificar subscribers em mudanças. Componentes re-renderizam em atualizações de estado.
+4. **Skeleton Screens** — Funções `showSkeleton*()` exibem UI placeholder durante carregamento.
+5. **Tratamento de Erros** — `safeFetch()` envolve todas as chamadas de API com retry. `renderErrorCard()` mostra mensagens de erro acionáveis.
 
-### Backend Architecture
+### Arquitetura do Backend
 
 ```
 backend/
 ├── app/
 │   ├── main.py           # Flask app factory + error handlers
-│   ├── config/settings.py  # Configuration + env vars
+│   ├── config/settings.py  # Configuração + env vars
 │   ├── middleware/
 │   │   └── rate_limit.py # Sliding window rate limiter
 │   ├── models/
 │   │   └── errors.py      # Error classes + response helpers
 │   ├── routes/
-│   │   └── search.py      # All API endpoints + SSE
+│   │   └── search.py      # Todos os endpoints da API + SSE
 │   └── services/
-│       ├── persistence.py # JSON file storage
-│       ├── pipeline.py    # Pipeline orchestration
+│       ├── persistence.py # Armazenamento em JSON
+│       ├── pipeline.py    # Orquestração do pipeline
 │       ├── external_api.py # Serper, BrasilAPI, Maps
-│       └── scraper.py     # Website scraping
+│       └── scraper.py     # Scraping de sites
 ├── requirements.txt
 └── Dockerfile
 ```
 
 ---
-
-## 🎯 Público-Alvo
-
-| Perfil | Uso |
-|--------|-----|
-| **Agências de marketing** | Prospecção de clientes B2B para oferecer serviços digitais |
-| **Consultórios de vendas** | Enriquecimento de leads e diagnóstico de abordagem |
-| **SDRs / Pré-vendas** | Busca automática de empresas por nicho e localização |
-| **Donos de negócio local** | Análise de concorrência e oportunidades no próprio mercado |
-| **Startups B2B** | Validação de mercado e outbound automatizado |
-
-## 💔 Problemas que Resolve
-
-| Dor | Como Resolve |
-|----|-------------|
-| **Encontrar leads qualificados** | Busca automática via Google, Maps e CNPJ |
-| **Dados incompletos** | Enriquecimento com site, Instagram, telefone, email, CNPJ |
-| **Sem priorização** | Score 0-100 de presença digital — foco nos que mais precisam |
-| **Abordagem genérica** | Diagnóstico de IA com mensagem personalizada pra WhatsApp |
-| **Perda de tempo com leads ruins** | Filtros por plataforma, score e flags de presença |
-| **Concorrência cega** | Análise de mercado com IA mostrando oportunidades e gaps |
-| **Processo manual e lento** | Pipeline completa: busca → enriquece → pontua → analisa em minutos |
-| **Sem diagnóstico individual** | Cada lead recebe análise de fraquezas, oportunidades e urgência |
 
 ## 🏛️ Meta-Framework
 
@@ -312,41 +321,41 @@ python3 scripts/validate-framework.py --path docs/meta-framework -v
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contribuindo
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m 'Add my feature'`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Open a Pull Request
+1. Faça fork do repositório
+2. Crie uma branch: `git checkout -b feature/minha-feature`
+3. Commit suas mudanças: `git commit -m 'Add minha feature'`
+4. Push na branch: `git push origin feature/minha-feature`
+5. Abra um Pull Request
 
 ### Guidelines
 
-- **Frontend**: Keep CSS/JS modular — no inline styles or scripts in HTML
-- **Backend**: Follow Flask Blueprint patterns, use type hints, add docstrings
-- **API**: Maintain backward compatibility, document changes in `docs/API.md`
+- **Frontend**: Mantenha CSS/JS modular — sem estilos ou scripts inline no HTML
+- **Backend**: Siga padrões Flask Blueprint, use type hints, adicione docstrings
+- **API**: Mantenha compatibilidade com versões anteriores, documente mudanças em `docs/API.md`
 - **Commits**: Use conventional commits (`feat:`, `fix:`, `docs:`, `refactor:`)
 
 ---
 
-## 📄 License
+## 📄 Licença
 
-MIT License — see [LICENSE](LICENSE) for details.
+Licença MIT — veja [LICENSE](LICENSE) para detalhes.
 
 ---
 
-## 🙏 Credits
+## 🙏 Créditos
 
-- **Serper API** — Google Search results
-- **BrasilAPI** — Brazilian CNPJ data
-- **Ollama Cloud** — AI analysis and diagnosis (GLM-5.1, MiniMax-M2.7)
-- **Flask** — Python web framework
-- **nginx** — Static serving and reverse proxy
+- **Serper API** — Resultados do Google Search
+- **BrasilAPI** — Dados de CNPJ brasileiro
+- **Ollama Cloud** — Análise e diagnóstico por IA (GLM-5.1, MiniMax-M2.7)
+- **Flask** — Framework web Python
+- **nginx** — Servidor estático e proxy reverso
 
 ---
 
 <div align="center">
 
-**[Prospector](https://github.com/paulogirto-hub/prospector)** — Built with 🔍 and 🧠
+**[Prospector](https://github.com/paulogirto-hub/prospector)** — Feito com 🔍 e 🧠
 
 </div>
