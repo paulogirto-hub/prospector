@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      - SERPER_KEY=${SERPER_KEY}
+      - OLLAMA_KEY=${OLLAMA_KEY}
+      - OLLAMA_BASE=https://ollama.com/v1
+      - OLLAMA_MODEL=glm-5.1
+      - DATA_DIR=/app/data
+    volumes:
+      - prospector_data:/app/data
+    networks:
+      - prospector_net
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8088:80"
+    depends_on:
+      - backend
+    networks:
+      - prospector_net
+    restart: unless-stopped
+
+volumes:
+  prospector_data:
+
+networks:
+  prospector_net:

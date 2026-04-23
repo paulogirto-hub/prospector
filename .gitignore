@@ -1,0 +1,66 @@
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ─── Ambiente ───
+.env
+.venv/
+venv/
+env/
+
+# ─── Dados ───
+data/
+*.json
+!package.json
+
+# ─── Docker ───
+.docker/
+
+# ─── IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+
+# ─── Logs ───
+*.log
+
+# ─── Backups ───
+*.bak
+*.bak2
+*.orig
+*.old
+
+# ─── Node (frontend) ───
+node_modules/
+
+# ─── Cache ───
+.cache/
+.pytest_cache/
+
+# ─── Misc ───
+*.tmp
+*.temp
+.env.local
+.env.production
+
+# ─── Refactor docs (internal) ───
+REFACTOR.md
+REFACTOR-FRONTEND.md
+
+# ─── Temp scripts ───
+flatten_patch.py
+
+# ─── Brace expansion leftovers ───
+{backend,frontend}/
