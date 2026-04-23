@@ -6,8 +6,10 @@ Maintains backward-compatible response contracts with the original app.py.
 """
 import re
 import threading
+import time
+import json
 
-from flask import Blueprint, request
+from flask import Blueprint, request, Response
 
 from app.config.settings import DEFAULT_MAX_RESULTS
 from app.models.errors import make_success, NotFoundError, ValidationError, AppError
@@ -226,6 +228,59 @@ def get_search(search_id):
     _flatten_summary(data)
 
     return make_success(data=data)
+
+
+@search_bp.route("/search/<search_id>/stream", methods=["GET"])
+def stream_search(search_id):
+    """SSE endpoint for real-time search status updates."""
+    data = load_search(search_id)
+    if not data:
+        # Return a single event with error
+        def error_gen():
+            yield f"event: error\ndata: {json.dumps({'error': 'Search not found'})}\n\n"
+        return Response(error_gen(), mimetype='text/event-stream',
+                       headers={'Cache-Control': 'no-cache', 'X-Accel-Buffering': 'no'})
+
+    def generate():
+        max_polls = 600  # 10 min max at 1s interval
+        poll_count = 0
+        last_status = None
+        while poll_count < max_polls:
+            current = load_search(search_id)
+            if not current:
+                yield f"event: error\ndata: {json.dumps({'error': 'Search not found'})}\n\n"
+                break
+
+            # Ensure summary defaults and flatten
+            _ensure_summary_defaults(current)
+            _flatten_summary(current)
+
+            # Send update event
+            # Remove leads from SSE to reduce payload
+            light_data = {k: v for k, v in current.items() if k != 'leads'}
+            light_data['leads_count'] = len(current.get('leads', []))
+            yield f"event: update\ndata: {json.dumps(light_data)}\n\n"
+
+            status = current.get('status', 'unknown')
+
+            # Check if we reached a final state
+            final_states = ['discovery', 'enriched', 'scored', 'market_analyzed',
+                           'analyzed', 'error', 'diagnosed']
+            if status in final_states and last_status == status:
+                # Send complete event
+                yield f"event: complete\ndata: {json.dumps(light_data)}\n\n"
+                break
+
+            last_status = status
+            time.sleep(1)
+            poll_count += 1
+
+    return Response(generate(), mimetype='text/event-stream',
+                   headers={
+                       'Cache-Control': 'no-cache',
+                       'X-Accel-Buffering': 'no',
+                       'Connection': 'keep-alive',
+                   })
 
 
 @search_bp.route("/search/<search_id>", methods=["DELETE"])
